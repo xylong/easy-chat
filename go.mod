@@ -3,7 +3,11 @@ module easy-chat
 go 1.22.4
 
 require (
+	github.com/edwingeng/wuid v1.0.0
+	github.com/golang-jwt/jwt/v4 v4.5.0
+	github.com/spf13/cast v1.6.0
 	github.com/zeromicro/go-zero v1.6.6
+	golang.org/x/crypto v0.24.0
 	google.golang.org/grpc v1.64.0
 	google.golang.org/protobuf v1.34.2
 )
@@ -17,6 +21,7 @@ require (
 	github.com/coreos/go-systemd/v22 v22.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
+	github.com/edwingeng/slog v0.0.0-20221027170832-482f0dfb6247 // indirect
 	github.com/emicklei/go-restful/v3 v3.11.0 // indirect
 	github.com/fatih/color v1.17.0 // indirect
 	github.com/go-logr/logr v1.3.0 // indirect
@@ -26,7 +31,6 @@ require (
 	github.com/go-openapi/swag v0.22.4 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/gnostic-models v0.6.8 // indirect
@@ -51,7 +55,6 @@ require (
 	github.com/prometheus/procfs v0.12.0 // indirect
 	github.com/redis/go-redis/v9 v9.5.3 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
-	github.com/spf13/cast v1.6.0 // indirect
 	go.etcd.io/etcd/api/v3 v3.5.14 // indirect
 	go.etcd.io/etcd/client/pkg/v3 v3.5.14 // indirect
 	go.etcd.io/etcd/client/v3 v3.5.14 // indirect

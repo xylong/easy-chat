@@ -9,17 +9,63 @@ package user; // 默认包名
 // 包名
 option go_package = "./user";
 
-message Request {}
-message Response {}
+// model
+message UserEntity {
+  string  id = 1;                // 用户id
+  string  avatar = 2;            // 用户头像
+  string  nickname = 3;          // 昵称
+  string  phone  = 4;            // 手机号码
+  int32   status  = 5;           // 是否锁住
+  int32   sex = 6;
+}
 
-message GetUserReq {
-  // 属性的类型 属性名 = 标识符
+message Request {
+  string ping = 1;
+}
+
+message Response {
+  string pong = 1;
+}
+
+message LoginReq {
+  string  phone = 1;
+  string  password = 2;
+}
+
+message LoginResp {
+  string token = 1;
+  int64 expire = 2;
+}
+
+message RegisterReq{
+  string  phone = 1;
+  string  nickname = 2;
+  string  password = 3;
+  string  avatar = 4;
+  int32   sex = 5;
+}
+
+message RegisterResp {
+  string token = 1;
+  int64 expire = 2;
+}
+
+message GetUserInfoReq {
   string id = 1;
 }
-message GetUserResp {
-  string id = 1;
-  string name = 2;
-  string phone = 3;
+
+message GetUserInfoResp {
+  UserEntity user = 1;
+}
+
+message FindUserReq {
+  string name = 1;
+  string phone = 2;
+  repeated string ids = 3;
+}
+
+message FindUserResp {
+  repeated UserEntity user = 1;
 }
 
 message CreateReq {
@@ -37,7 +83,13 @@ message UserInfo {
 
 // 定义服务名
 service User {
-  rpc GetUser(GetUserReq) returns (GetUserResp);
+  rpc Ping(Request) returns (Response);
 
-  rpc Create(CreateReq) returns (Response);
+  rpc Login(LoginReq) returns (LoginResp);
+
+  rpc Register(RegisterReq) returns (RegisterResp);
+
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp);
+
+  rpc FindUser(FindUserReq) returns (FindUserResp);
 }
