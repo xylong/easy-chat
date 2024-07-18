@@ -2,6 +2,9 @@ package logic
 
 import (
 	"context"
+	"easy-chat/apps/user/models"
+	"easy-chat/pkg/sqlx"
+	"time"
 
 	"easy-chat/apps/user/rpc/internal/svc"
 	"easy-chat/apps/user/rpc/user"
@@ -23,8 +26,16 @@ func NewCreateLogic(ctx context.Context, svcCtx *svc.ServiceContext) *CreateLogi
 	}
 }
 
-func (l *CreateLogic) Create(in *user.CreateReq) (*user.CreateResp, error) {
-	// todo: add your logic here and delete this line
+func (l *CreateLogic) Create(in *user.CreateReq) (*user.Response, error) {
+	now := time.Now()
+	_, err := l.svcCtx.UserModel.Insert(l.ctx, &models.Users{
+		Avatar:    in.Avatar,
+		Name:      in.Name,
+		Phone:     in.Phone,
+		Password:  sqlx.ToNullString(in.Password),
+		CreatedAt: sqlx.ToNullTime(now),
+		UpdatedAt: sqlx.ToNullTime(now),
+	})
 
-	return &user.CreateResp{}, nil
+	return &user.Response{}, err
 }

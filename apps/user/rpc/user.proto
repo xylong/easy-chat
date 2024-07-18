@@ -23,19 +23,21 @@ message GetUserResp {
 }
 
 message CreateReq {
-  string id = 1;
-  string name = 2;
-  string phone = 3;
+  string name = 1;
+  string phone = 2;
+  string avatar = 3;
+  string password = 4;
 }
 
-message CreateResp {
 
+message UserInfo {
+  string name = 1;
+  string phone = 2;
 }
+
 // 定义服务名
 service User {
   rpc GetUser(GetUserReq) returns (GetUserResp);
 
-  rpc Create(CreateReq) returns (CreateResp);
-
-  rpc Ping(Request) returns(Response);
+  rpc Create(CreateReq) returns (Response);
 }
