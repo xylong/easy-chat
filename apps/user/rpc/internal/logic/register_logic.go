@@ -4,6 +4,7 @@ import (
 	"context"
 	"easy-chat/apps/user/models"
 	"easy-chat/pkg/ctxdata"
+	"easy-chat/pkg/encrypt"
 	"easy-chat/pkg/sqlx"
 	"easy-chat/pkg/wuid"
 	"errors"
@@ -46,11 +47,14 @@ func (l *RegisterLogic) Register(in *user.RegisterReq) (*user.RegisterResp, erro
 		return nil, ErrPhoneIsRegister
 	}
 
+	password, _ := encrypt.GenPasswordHash([]byte(in.Password))
+
 	userEntity = &models.Users{
 		Id:        wuid.GenUid(l.svcCtx.Config.Mysql.DataSource),
 		Avatar:    in.Avatar,
 		Nickname:  in.Nickname,
 		Phone:     in.Phone,
+		Password:  sqlx.ToNullString(cast.ToString(password)),
 		Sex:       sqlx.ToNullInt64(cast.ToInt64(in.Sex)),
 		CreatedAt: sqlx.ToNullTime(time.Now()),
 		UpdatedAt: sqlx.ToNullTime(time.Now()),
