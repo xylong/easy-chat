@@ -1,0 +1,29 @@
+// 语法版本
+syntax = "v1"
+
+// 服务接口的描述
+info (
+	title:"用户api"
+	desc: "用户服务api内容"
+	author: "xyl"
+	version: "v1"
+)
+
+// 请求参数结构
+type (
+	UserReq {
+		Id string `form:"id"`
+	}
+
+	UserResp {
+		Id    string `json:"id"`
+		Name  string `json:"name"`
+		Phone string `json:"phone"`
+	}
+)
+
+service User {
+	@doc "获取用户"
+	@handler user
+	get /user(UserReq) returns (UserResp)
+}

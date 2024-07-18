@@ -1,0 +1,8 @@
+Name: User
+Host: 0.0.0.0
+Port: 8888
+
+UserRPC:
+  NonBlock: true
+  Endpoints:
+    - 127.0.0.1:8080
