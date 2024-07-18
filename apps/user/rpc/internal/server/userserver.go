@@ -6,9 +6,9 @@ package server
 import (
 	"context"
 
-	"easy-chat/user/internal/logic"
-	"easy-chat/user/internal/svc"
-	"easy-chat/user/user"
+	"easy-chat/apps/user/rpc/internal/logic"
+	"easy-chat/apps/user/rpc/internal/svc"
+	"easy-chat/apps/user/rpc/user"
 )
 
 type UserServer struct {
@@ -20,6 +20,16 @@ func NewUserServer(svcCtx *svc.ServiceContext) *UserServer {
 	return &UserServer{
 		svcCtx: svcCtx,
 	}
+}
+
+func (s *UserServer) GetUser(ctx context.Context, in *user.GetUserReq) (*user.GetUserResp, error) {
+	l := logic.NewGetUserLogic(ctx, s.svcCtx)
+	return l.GetUser(in)
+}
+
+func (s *UserServer) Create(ctx context.Context, in *user.CreateReq) (*user.CreateResp, error) {
+	l := logic.NewCreateLogic(ctx, s.svcCtx)
+	return l.Create(in)
 }
 
 func (s *UserServer) Ping(ctx context.Context, in *user.Request) (*user.Response, error) {

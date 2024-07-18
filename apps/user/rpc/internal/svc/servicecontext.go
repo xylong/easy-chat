@@ -1,6 +1,6 @@
 package svc
 
-import "easy-chat/user/internal/config"
+import "easy-chat/apps/user/rpc/internal/config"
 
 type ServiceContext struct {
 	Config config.Config
