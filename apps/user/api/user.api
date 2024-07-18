@@ -22,6 +22,10 @@ type (
 	}
 )
 
+@server (
+	middleware: LoginVerification
+)
+
 service User {
 	@doc "获取用户"
 	@handler user

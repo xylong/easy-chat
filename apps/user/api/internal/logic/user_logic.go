@@ -2,9 +2,11 @@ package logic
 
 import (
 	"context"
+	"easy-chat/apps/user/rpc/userclient"
+
 	"easy-chat/apps/user/api/internal/svc"
 	"easy-chat/apps/user/api/internal/types"
-	"easy-chat/apps/user/rpc/userclient"
+
 	"github.com/zeromicro/go-zero/core/logx"
 )
 

@@ -16,30 +16,6 @@ type GetUserLogic struct {
 	logx.Logger
 }
 
-type User struct {
-	Id    string
-	Name  string
-	Phone string
-	Pass  string
-}
-
-var (
-	users = map[string]*User{
-		"1": {
-			Id:    "1",
-			Name:  "张三",
-			Phone: "13000001111",
-			Pass:  "123456",
-		},
-		"2": {
-			Id:    "2",
-			Name:  "李四",
-			Phone: "132000111",
-			Pass:  "123456",
-		},
-	}
-)
-
 func NewGetUserLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetUserLogic {
 	return &GetUserLogic{
 		ctx:    ctx,
