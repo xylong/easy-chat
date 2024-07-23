@@ -9,5 +9,5 @@ Cache:
     Pass:
 
 Jwt:
-  AccessSecret: summer
-  AccessExpire: 8640000
+  AccessSecret: easy-chat
+  AccessExpire: 86400

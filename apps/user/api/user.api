@@ -9,6 +9,10 @@ info (
 	version: "v1"
 )
 
+import (
+	"domain.api"
+)
+
 // 请求参数结构
 type (
 	UserReq {
@@ -23,11 +27,27 @@ type (
 )
 
 @server (
-	middleware: LoginVerification
+	prefix: v1/user
+	group: user
 )
 
-service User {
-	@doc "获取用户"
-	@handler user
-	get /user(UserReq) returns (UserResp)
+service user {
+	@doc "注册"
+	@handler register
+	post /register (RegisterReq) returns (RegisterResp)
+
+	@doc "登录"
+	@handler login
+	post /login (LoginReq) returns (LoginResp)
+}
+
+@server (
+	prefix: v1/user
+	group: user
+	jwt: JwtAuth
+)
+service user {
+	@doc "获取用户信息"
+	@handler detail
+	get /user (UserInfoReq) returns (UserInfoResp)
 }

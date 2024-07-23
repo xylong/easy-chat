@@ -2,22 +2,18 @@ package svc
 
 import (
 	"easy-chat/apps/user/api/internal/config"
-	"easy-chat/apps/user/api/internal/middleware"
-	"easy-chat/apps/user/rpc/userclient"
-	"github.com/zeromicro/go-zero/rest"
+	"easy-chat/apps/user/rpc/user_client"
 	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type ServiceContext struct {
-	Config            config.Config
-	UserClient        userclient.User
-	LoginVerification rest.Middleware
+	Config     config.Config
+	UserClient user_client.User
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
-		Config:            c,
-		UserClient:        userclient.NewUser(zrpc.MustNewClient(c.UserRpc)),
-		LoginVerification: middleware.NewLoginVerificationMiddleware().Handle,
+		Config:     c,
+		UserClient: user_client.NewUser(zrpc.MustNewClient(c.UserRpc)),
 	}
 }

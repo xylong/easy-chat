@@ -1,24 +1,24 @@
-package handler
+package user
 
 import (
 	"net/http"
 
-	"easy-chat/apps/user/api/internal/logic"
+	"easy-chat/apps/user/api/internal/logic/user"
 	"easy-chat/apps/user/api/internal/svc"
 	"easy-chat/apps/user/api/internal/types"
 	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
-func userHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+func LoginHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var req types.UserReq
+		var req types.LoginReq
 		if err := httpx.Parse(r, &req); err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 			return
 		}
 
-		l := logic.NewUserLogic(r.Context(), svcCtx)
-		resp, err := l.User(&req)
+		l := user.NewLoginLogic(r.Context(), svcCtx)
+		resp, err := l.Login(&req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {
