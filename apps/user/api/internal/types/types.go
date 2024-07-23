@@ -13,7 +13,7 @@ type UserResp struct {
 
 type User struct {
 	Id       string `json:"id"`
-	Mobile   string `json:"mobile"`
+	Phone    string `json:"phone"`
 	Nickname string `json:"nickname"`
 	Sex      byte   `json:"sex"`
 	Avatar   string `json:"avatar"`
