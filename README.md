@@ -7,6 +7,9 @@
 ```dockerfile
 docker build -t go:alpine3.18.4 .
 docker run --name go -d go:alpine3.18.4
+
+# 删除
+docker stop go | xargs docker rm
 ```
 
 ### 目录
