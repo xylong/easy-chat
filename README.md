@@ -39,22 +39,33 @@ docker ps
 ### 目录
 ```
 .
+├── Dockerfile
+├── Makefile                            项目编译脚本程序
+├── Dockerfile_etcd
+├── Dockerfile_rpc
+├── Makefile
+├── README.md
 ├── apps
-│   ├── social                  社交服务
-│   └── user                    用户服务
+│   ├── im
+│   ├── social
+│   └── user
 ├── cmd.sh
-├── deploy
+├── deploy                              项目部署相关信息
+│   ├── dockerfile
+│   ├── mk
 │   └── sql
 ├── docker-compose.yaml
 ├── go.mod
 ├── go.sum
-└── pkg
+├── main.go
+└── pkg                                 公共工具目录
     ├── constants
     ├── ctxdata
     ├── encrypt
     ├── interceptor
     ├── resultx
     ├── sqlx
+    ├── tools
     ├── wuid
     └── xerr
 ```
