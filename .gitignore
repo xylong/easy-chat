@@ -1,3 +1,4 @@
 .idea
 .vscode
 apps/user/bin
+bin
