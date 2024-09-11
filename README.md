@@ -50,6 +50,7 @@ docker ps
 │   ├── social
 │   └── user
 ├── cmd.sh
+├── bin                                 编译后的文件
 ├── deploy                              项目部署相关信息
 │   ├── dockerfile
 │   ├── mk
