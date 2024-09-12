@@ -2,7 +2,7 @@ version: '3'
 
 services:
   etcd:
-    image: bitnami/etcd:3.4.15
+    image: bitnami/etcd:3.5.15
     container_name: etcd
     ports:
       - "3379:2379"
@@ -10,7 +10,7 @@ services:
     environment:
       - ETCD_ENABLE_V2=true
       - ALLOW_NONE_AUTHENTICATION=yes
-      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://192.168.2.16:2379
       - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
       - ETCD_NAME=etcd
     volumes:
@@ -23,7 +23,7 @@ services:
     image: redis:alpine3.18
     ports:
       - 16379:6379
-    container_name: redis
+    container_name: redis-alpine
     volumes:
       - ./components/redis/data:/data
       - ./components/redis/config/redis.conf:/usr/local/redis/config/redis.conf
@@ -35,10 +35,10 @@ services:
     command: redis-server --requirepass easy-chat --appendonly yes
 
   mysql:
-    image: mysql:5.7
+    image: bitnami/mysql:5.7.43
     ports:
       - 13306:3306
-    container_name: mysql
+    container_name: mysql57
     volumes:
       - ./components/mysql/data:/var/lib/mysql
       - /etc/localtime:/etc/localtime
