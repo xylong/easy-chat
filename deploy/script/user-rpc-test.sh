@@ -1,5 +1,5 @@
 #!/bin/bash
-reso_addr='registry.cn-hangzhou.aliyuncs.com/easy-chat/user-rpc-test'
+reso_addr='registry.cn-hangzhou.aliyuncs.com/zero-easy-chat/user-rpc-dev'
 tag='latest'
 
 container_name="easy-chat-user-rpc-test"
