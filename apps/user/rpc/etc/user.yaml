@@ -1,17 +1,17 @@
 Name: user.rpc
-ListenOn: 0.0.0.0:8080
+ListenOn: 0.0.0.0:10000
 
 Etcd:
   Hosts:
-    - 168.10.0.20:2379
+    - 192.168.2.16:3379
   Key: user.rpc
 
 Mysql:
-  DataSource: root:123456@tcp(127.0.0.1:3306)/im?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+  DataSource: root:easy-chat@tcp(127.0.0.1:13306)/im?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 Cache:
-  - Host: 127.0.0.1:6379
+  - Host: 127.0.0.1:16379
     Type: node
-    Pass:
+    Pass: easy-chat
 
 Jwt:
   AccessSecret: easy-chat
